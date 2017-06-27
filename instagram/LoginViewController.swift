@@ -27,6 +27,14 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func onSignIn(_ sender: Any) {
+        PFUser.logInWithUsername(inBackground: usernameField.text!, password: passwordField.text!) { (user: PFUser?, error: Error?) in
+            if user != nil {
+                print("you're logged in!")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            } else {
+                print(error?.localizedDescription ?? "")
+            }
+        }
     }
     
     @IBAction func onSignUp(_ sender: Any) {
@@ -36,8 +44,12 @@ class LoginViewController: UIViewController {
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if success {
                 print("Yay, user was created")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
-            print(error?.localizedDescription)
+            print(error?.localizedDescription ?? "")
+                /*if error?.code == 202 {
+                    print("Username is taken")
+                }*/
             }
         }
     }
