@@ -9,10 +9,17 @@
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerControllerSourceType.camera
+        
+        self.present(vc, animated: true, completion: nil)
 
         // Do any additional setup after loading the view.
     }
@@ -20,6 +27,15 @@ class FeedViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = UIImagePickerControllerEditedImage as! UIImage
+        
+        // dakjsakjsdaksdj
+        dismiss(animated: true, completion: nil)
+        
     }
  
     @IBAction func logOut(_ sender: Any) {
