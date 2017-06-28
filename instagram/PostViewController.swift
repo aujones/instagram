@@ -11,7 +11,10 @@ import Parse
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var uploadPictureButton: UIButton!
+    
+    @IBOutlet weak var captionField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +38,31 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        uploadPictureButton.setTitle("", for: UIControlState())
-        uploadPictureButton.setBackgroundImage(editedImage, for: UIControlState())
+        //uploadPictureButton.setTitle("", for: UIControlState())
+        photoView.image = editedImage
+        //uploadPictureButton.setBackgroundImage(editedImage, for: UIControlState())
+        
         // dakjsakjsdaksdj
         dismiss(animated: true, completion: nil)
         
     }
     
     @IBAction func postPhoto(_ sender: Any) {
-        let image = uploadPictureButton.backgroundImage
-        //postUserImage(image: image, caption: "caption", completion: nil)
+        let image = photoView.image
+        if image != nil {
+            Post.postUserImage(image: image, withCaption: captionField.text, withCompletion: nil)
+            captionField.text = ""
+            photoView.image = nil
+        }else {
+            let alertController = UIAlertController(title: "Error", message: "Please choose an image to post", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            }
+            // add the OK action to the alert controller
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true)
+            
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

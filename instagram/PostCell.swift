@@ -9,7 +9,18 @@
 import UIKit
 
 class PostCell: UITableViewCell {
-
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var numLikesLabel: UILabel!
+    @IBOutlet weak var captionLabel: UILabel!
+    
+    @IBOutlet weak var postImageView: UIImageView!
+    
+    @IBOutlet weak var topUsernameLabel: UILabel!
+    
+    @IBOutlet weak var bottomUsernameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
