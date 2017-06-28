@@ -24,6 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://pure-mesa-48708.herokuapp.com/parse"
             })
         )
+        if PFUser.current() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let feedNavController = storyboard.instantiateViewController(withIdentifier: "FeedNavController")
+            window?.rootViewController = feedNavController
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("logoutNotification"), object: nil, queue: OperationQueue.main) { (Notification) in
+            // take user to logout screen
+            print("notification received")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            self.window?.rootViewController = loginViewController
+        }
         return true
     }
 
