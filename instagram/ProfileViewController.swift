@@ -1,15 +1,15 @@
 //
-//  FeedViewController.swift
+//  ProfileViewController.swift
 //  instagram
 //
-//  Created by Audrey Jones on 6/27/17.
+//  Created by Audrey Jones on 6/28/17.
 //  Copyright © 2017 Audrey Jones. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,14 @@ class FeedViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+        PFUser.logOutInBackground { (error: Error?) in
+        }
+        NotificationCenter.default.post(name: NSNotification.Name("logoutNotification"), object: nil)
+        
+        
     }
 
     /*

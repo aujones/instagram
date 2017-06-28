@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         if PFUser.current() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let feedNavController = storyboard.instantiateViewController(withIdentifier: "FeedNavController")
-            window?.rootViewController = feedNavController
+            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
+            window?.rootViewController = tabBarController
         }
         NotificationCenter.default.addObserver(forName: NSNotification.Name("logoutNotification"), object: nil, queue: OperationQueue.main) { (Notification) in
             // take user to logout screen
