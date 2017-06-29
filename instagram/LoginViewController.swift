@@ -41,6 +41,8 @@ class LoginViewController: UIViewController {
         let newUser = PFUser()
         newUser.username = usernameField.text
         newUser.password = passwordField.text
+        newUser["profile_pic"] = Post.getPFFileFromImage(image: #imageLiteral(resourceName: "default_user_image"))
+        newUser["bio"] = ""
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if success {
                 print("Yay, user was created")

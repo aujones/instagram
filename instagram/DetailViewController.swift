@@ -43,6 +43,13 @@ class DetailViewController: UIViewController {
             let user = post["author"] as? PFUser
             topUsernameLabel.text = user?.username
             bottomUsernameLabel.text = user?.username
+            let profPic = user?["profile_pic"] as! PFFile
+            profPic.getDataInBackground { (imageData: Data?, error: Error?) in
+                if error ==  nil {
+                    let newImage = UIImage(data:imageData!)
+                    self.profileImageView.image = newImage
+                }
+            }
             
         }
 

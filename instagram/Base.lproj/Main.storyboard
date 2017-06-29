@@ -246,6 +246,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="71Z-Wf-i94" id="TXm-et-4G1"/>
+                        <outlet property="editProfileButton" destination="FnO-FO-JBU" id="Ex3-p0-XRA"/>
+                        <outlet property="profilePicture" destination="CDh-ch-Hnb" id="oc4-Td-DOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBA-dL-F4C" userLabel="First Responder" sceneMemberID="firstResponder"/>

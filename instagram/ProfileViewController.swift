@@ -11,7 +11,9 @@ import Parse
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var profilePicture: UIImageView!
     
     var posts : [PFObject] = []
     let user = PFUser.current()
@@ -33,6 +35,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             } else {
                 self.posts = newPosts!
                 self.collectionView.reloadData()
+            }
+        }
+        let profPic = user?["profile_pic"] as! PFFile
+        profPic.getDataInBackground { (imageData: Data?, error: Error?) in
+            if error ==  nil {
+                let newImage = UIImage(data:imageData!)
+                self.profilePicture.image = newImage
             }
         }
         let refreshControl = UIRefreshControl()

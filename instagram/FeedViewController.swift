@@ -56,7 +56,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.postImageView.image = newImage
             }
         }
-        
+        let picUser = post["author"] as! PFUser
+        let profPic = picUser["profile_pic"] as! PFFile
+        profPic.getDataInBackground { (imageData: Data?, error: Error?) in
+            if error ==  nil {
+                let newImage = UIImage(data:imageData!)
+                cell.profileImageView.image = newImage
+            }
+        }
         let numLikes = post["likesCount"]
         let numLikesNum = numLikes as! NSNumber
         let numLikesString : String = numLikesNum.stringValue
