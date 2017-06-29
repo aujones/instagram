@@ -17,10 +17,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        postTableView.separatorStyle = .none
+        
         postTableView.delegate = self
         postTableView.dataSource = self
         
         let query = PFQuery(className: "Post")
+        query.limit = 20
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
         query.findObjectsInBackground { (newPosts: [PFObject]?, error: Error?) in
@@ -57,7 +60,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let numLikes = post["likesCount"]
         let numLikesNum = numLikes as! NSNumber
         let numLikesString : String = numLikesNum.stringValue
-        //cell.postImageView.image = image
         cell.captionLabel.text = caption
         cell.numLikesLabel.text = numLikesString
         let user = post["author"] as? PFUser
@@ -68,6 +70,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         let query = PFQuery(className: "Post")
+        query.limit = 20
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
         query.findObjectsInBackground { (newPosts: [PFObject]?, error: Error?) in

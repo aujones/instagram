@@ -31,25 +31,25 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             print("Camera 🚫 available so we will use photo library instead")
             vc.sourceType = .photoLibrary
         }
-        
+
         self.present(vc, animated: true, completion: nil)
         
     }
+    
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        //uploadPictureButton.setTitle("", for: UIControlState())
         photoView.image = editedImage
-        //uploadPictureButton.setBackgroundImage(editedImage, for: UIControlState())
         
         // dakjsakjsdaksdj
         dismiss(animated: true, completion: nil)
-        
     }
-    
     @IBAction func postPhoto(_ sender: Any) {
         let image = photoView.image
         if image != nil {
+            //let newImage = resize(image: image!, newSize: CGSize())
             Post.postUserImage(image: image, withCaption: captionField.text, withCompletion: nil)
             captionField.text = ""
             photoView.image = nil
@@ -64,6 +64,18 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
     }
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: newSize.width, height: newSize.height)))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
