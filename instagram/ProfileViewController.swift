@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var bioLabel: UILabel!
     
     var posts : [PFObject] = []
     let user = PFUser.current()
@@ -44,6 +46,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                 self.profilePicture.image = newImage
             }
         }
+        let username = user?.username
+        usernameLabel.text = username
+        let userBio = user?["bio"] as! String
+        bioLabel.text = userBio
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         collectionView.insertSubview(refreshControl, at: 0)
@@ -97,12 +103,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (sender as? UIButton) != nil {
+            return
+        }
         let cell = sender as! UICollectionViewCell
         if let indexPath = collectionView.indexPath(for: cell) {
             let post = posts[indexPath.row]

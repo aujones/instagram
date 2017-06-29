@@ -24,28 +24,41 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
+            action in
+            vc.sourceType = .camera
+            self.present(vc, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {
+            action in
+            vc.sourceType = .photoLibrary
+            self.present(vc, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        /*if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("Camera is available 📸")
             vc.sourceType = .camera
         } else {
             print("Camera 🚫 available so we will use photo library instead")
             vc.sourceType = .photoLibrary
-        }
-
-        self.present(vc, animated: true, completion: nil)
+        }*/
         
     }
     
-    
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        photoView.image = editedImage
-        
-        // dakjsakjsdaksdj
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        photoView.image = editedImage
+
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func postPhoto(_ sender: Any) {
         let image = photoView.image
         if image != nil {

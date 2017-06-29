@@ -175,6 +175,84 @@
             </objects>
             <point key="canvasLocation" x="1820" y="136.28185907046478"/>
         </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="bPg-FV-Oru">
+            <objects>
+                <viewController id="i0B-Ak-rZo" customClass="EditProfileViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jaL-Tv-Wz6"/>
+                        <viewControllerLayoutGuide type="bottom" id="dKq-dv-cEC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b8x-sT-45g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oB6-Y9-k1b">
+                                <rect key="frame" x="105" y="91" width="164" height="163"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pka-84-sbB">
+                                <rect key="frame" x="105" y="91" width="164" height="163"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Edit Profile Picture"/>
+                                <connections>
+                                    <action selector="choosePicture:" destination="i0B-Ak-rZo" eventType="touchUpInside" id="Pk0-O1-yrv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Bio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5F-Pt-6Qg">
+                                <rect key="frame" x="142" y="285" width="90" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HP8-zQ-lEO">
+                                <rect key="frame" x="38" y="337" width="299" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AWd-HL-F6B">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="aAf-Zc-60l">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5uk-8o-XIR">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelEdit:" destination="i0B-Ak-rZo" eventType="touchUpInside" id="DDC-6x-Fao"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="cancelEdit:" destination="i0B-Ak-rZo" id="PZA-h3-ZcM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="4YL-eO-aFz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GKd-W8-tvF">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="saveChanges:" destination="i0B-Ak-rZo" eventType="touchUpInside" id="dr4-JX-Rfr"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bioTextField" destination="HP8-zQ-lEO" id="Pc6-qf-LdI"/>
+                        <outlet property="profPic" destination="oB6-Y9-k1b" id="v1N-JY-146"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLx-h9-Uaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2759.1999999999998" y="-1387.5562218890557"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="eHo-pZ-8gI">
             <objects>
@@ -188,15 +266,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDh-ch-Hnb">
-                                <rect key="frame" x="0.0" y="64" width="90" height="91"/>
+                                <rect key="frame" x="0.0" y="64" width="75" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-FO-JBU">
-                                <rect key="frame" x="112" y="84" width="223" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Edit Profile"/>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="71Z-Wf-i94">
                                 <rect key="frame" x="0.0" y="163" width="375" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -223,15 +295,40 @@
                                         </view>
                                         <connections>
                                             <outlet property="picView" destination="PLl-rf-cFp" id="kfZ-bF-hgM"/>
-                                            <segue destination="wpp-Bt-WbZ" kind="show" id="xVO-qT-gRd"/>
+                                            <segue destination="wpp-Bt-WbZ" kind="show" identifier="DetailViewSegue" id="xVO-qT-gRd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGg-U4-3GL">
+                                <rect key="frame" x="118" y="72" width="130" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zQ-Tw-wyX">
+                                <rect key="frame" x="118" y="99" width="201" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="EjO-1f-hXO">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="2Tb-0a-CEH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FnO-FO-JBU">
+                                <rect key="frame" x="16" y="4" width="155" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Edit Profile"/>
+                                <connections>
+                                    <segue destination="zMc-12-TVB" kind="presentation" id="6wb-CN-Nda"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="NxB-MT-IJC">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FmU-1X-Ezf">
                                 <rect key="frame" x="273" y="4" width="86" height="35"/>
@@ -245,9 +342,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bioLabel" destination="4zQ-Tw-wyX" id="YBk-Cx-gjG"/>
                         <outlet property="collectionView" destination="71Z-Wf-i94" id="TXm-et-4G1"/>
                         <outlet property="editProfileButton" destination="FnO-FO-JBU" id="Ex3-p0-XRA"/>
                         <outlet property="profilePicture" destination="CDh-ch-Hnb" id="oc4-Td-DOn"/>
+                        <outlet property="usernameLabel" destination="FGg-U4-3GL" id="gXE-N8-Us3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBA-dL-F4C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,7 +356,7 @@
         <!--Detail View Controller-->
         <scene sceneID="bT1-vY-wvy">
             <objects>
-                <viewController id="wpp-Bt-WbZ" customClass="DetailViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="wpp-Bt-WbZ" customClass="DetailViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XpX-H1-BXm"/>
                         <viewControllerLayoutGuide type="bottom" id="eVS-7D-TAr"/>
@@ -323,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boc-YB-7vD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="-651.72413793103453"/>
+            <point key="canvasLocation" x="2591" y="-662"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Z7i-yj-kor">
@@ -436,6 +535,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzU-8f-87E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="872.79999999999995" y="-661.61919040479768"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3RI-oq-Lxr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zMc-12-TVB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PLW-bK-DTB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="i0B-Ak-rZo" kind="relationship" relationship="rootViewController" id="Whf-HD-EM7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DSW-8m-Jo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1820" y="-1387.5562218890557"/>
         </scene>
     </scenes>
     <resources>
