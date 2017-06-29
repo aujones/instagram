@@ -21,8 +21,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         collectionView.dataSource = self
 
         let query = PFQuery(className: "Post")
+        //let query = PFUser.query()
+        
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
+
+       // query.whereKey("username", equalTo: currentUser?.username ?? "")
         query.findObjectsInBackground { (newPosts: [PFObject]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
@@ -60,6 +64,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         let query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
+        //query.whereKey("author", equalTo: PFUser.current)
         query.includeKey("author")
         query.findObjectsInBackground { (newPosts: [PFObject]?, error: Error?) in
             if let error = error {
@@ -70,8 +75,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
         }
         refreshControl.endRefreshing()
-        
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
