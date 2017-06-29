@@ -7,11 +7,44 @@
 //
 
 import UIKit
+import Parse
 
 class DetailViewController: UIViewController {
 
+    var post : PFObject? = nil
+    
+    @IBOutlet weak var postImageView: UIImageView!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var bottomUsernameLabel: UILabel!
+    @IBOutlet weak var numLikesLabel: UILabel!
+    @IBOutlet weak var topUsernameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let post = post {
+            let caption = post["caption"] as! String
+            let image = post["media"] as! PFFile
+            image.getDataInBackground { (imageData: Data?, error: Error?) in
+                if error == nil {
+                    let newImage = UIImage(data: imageData!)
+                    self.postImageView.image = newImage
+                }
+            }
+            
+            let numLikes = post["likesCount"]
+            let numLikesNum = numLikes as! NSNumber
+            let numLikesString : String = numLikesNum.stringValue
+            captionLabel.text = caption
+            numLikesLabel.text = numLikesString
+            let user = post["author"] as? PFUser
+            topUsernameLabel.text = user?.username
+            bottomUsernameLabel.text = user?.username
+            
+        }
 
         // Do any additional setup after loading the view.
     }

@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var collectionView: UICollectionView!
     
     var posts : [PFObject] = []
+    let user = PFUser.current()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +23,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         collectionView.dataSource = self
 
         let query = PFQuery(className: "Post")
-        //let query = PFUser.query()
-        
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
 
-       // query.whereKey("username", equalTo: currentUser?.username ?? "")
+        query.whereKey("author", equalTo: user!)
         query.findObjectsInBackground { (newPosts: [PFObject]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
@@ -34,13 +34,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                 self.posts = newPosts!
                 self.collectionView.reloadData()
             }
-            let refreshControl = UIRefreshControl()
-            refreshControl.addTarget(self, action: #selector(self.refreshControlAction(_:)), for: UIControlEvents.valueChanged)
-            self.collectionView.insertSubview(refreshControl, at: 0)
         }
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        collectionView.insertSubview(refreshControl, at: 0)
         // Do any additional setup after loading the view.
-
-        // Do any additional setup after loading the view.
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -64,8 +63,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         let query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
-        //query.whereKey("author", equalTo: PFUser.current)
         query.includeKey("author")
+        query.whereKey("author", equalTo: user!)
         query.findObjectsInBackground { (newPosts: [PFObject]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
@@ -76,7 +75,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         refreshControl.endRefreshing()
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -87,17 +85,22 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         NotificationCenter.default.post(name: NSNotification.Name("logoutNotification"), object: nil)
         
-        
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let cell = sender as! UICollectionViewCell
+        if let indexPath = collectionView.indexPath(for: cell) {
+            let post = posts[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.post = post
+        }
     }
-    */
+    
 
 }
