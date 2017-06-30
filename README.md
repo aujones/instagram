@@ -10,35 +10,38 @@ The following **required** functionality is completed:
 
 - [x] User can sign up to create a new account using Parse authentication
 - [x] User can log in and log out of his or her account
-- [ ] The current signed in user is persisted across app restarts
-- [ ] User can take a photo, add a caption, and post it to "Instagram"
-- [ ] User can view the last 20 posts submitted to "Instagram"
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite Scrolling
-- [ ] User can tap a post to view post details, including timestamp and creation
-- [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user.
+- [x] The current signed in user is persisted across app restarts
+- [x] User can take a photo, add a caption, and post it to "Instagram"
+- [x] User can view the last 20 posts submitted to "Instagram"
+- [x] User can pull to refresh the last 20 posts submitted to "Instagram"
+- [x] User can load more posts once he or she reaches the bottom of the feed using infinite Scrolling
+- [x] User can tap a post to view post details, including timestamp and creation
+- [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user.
 
 The following **optional** features are implemented:
 
-- [ ] Show the username and creation time for each post
+- [x] Show the username and creation time for each post
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
-- [ ] User Profiles:
-- [ ] Allow the logged in user to add a profile photo
-- [ ] Display the profile photo with each post
+- [x] User Profiles:
+- [x] Allow the logged in user to add a profile photo
+- [x] Display the profile photo with each post
 - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [ ] User can like a post and see number of likes for each post in the post details screen.
-- [ ] Run your app on your phone and use the camera to take the photo
+- [x] Run your app on your phone and use the camera to take the photo
 
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] User can choose between using the camera and choosing from their photo library when posting and when updating profile picture
+- [x] User can create and update a biography that appears on their profile
+- [x] Edit profile button that takes user to a page where they can edit their profile picture/bio
+- [x] When typing in their caption for a post, the view moves up so that the user can type and still see what they're typing (and when they tap somewhere else on the screen, the keyboard disappears)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Adding filters
+2. Further customizing/improving the app's aesthetic
 
 ## Video Walkthrough
 

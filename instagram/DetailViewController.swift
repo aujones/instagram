@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var bottomUsernameLabel: UILabel!
     @IBOutlet weak var numLikesLabel: UILabel!
     @IBOutlet weak var topUsernameLabel: UILabel!
+    @IBOutlet weak var timeStampLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,15 @@ class DetailViewController: UIViewController {
             let numLikesString : String = numLikesNum.stringValue
             captionLabel.text = caption
             numLikesLabel.text = numLikesString
+            if let date = post.createdAt {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .short
+                let dateString = dateFormatter.string(from: date)
+                timeStampLabel.text = dateString
+            }
+            
+            
             let user = post["author"] as? PFUser
             topUsernameLabel.text = user?.username
             bottomUsernameLabel.text = user?.username
