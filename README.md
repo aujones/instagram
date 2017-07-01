@@ -50,7 +50,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![](instagram_demo.gif)
+![](audrey_instademo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
