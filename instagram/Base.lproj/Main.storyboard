@@ -146,6 +146,7 @@
                                             <outlet property="postImageView" destination="wXc-tz-ieZ" id="Adz-87-aM9"/>
                                             <outlet property="profileImageView" destination="Qfq-nA-X4y" id="FeX-8P-jpt"/>
                                             <outlet property="topUsernameLabel" destination="ZeH-WG-9ag" id="Mtj-4e-EXY"/>
+                                            <segue destination="wpp-Bt-WbZ" kind="show" id="Y27-dh-OeG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -579,4 +580,7 @@
         <image name="instabackground" width="240" height="240"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y27-dh-OeG"/>
+    </inferredMetricsTieBreakers>
 </document>
